@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Catalogue</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fff;
+      }
+      .catalogue {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 30px;
+      }
+      h2 {
+        color: #007bff;
+      }
+      .book {
+        margin-bottom: 25px;
+      }
+      .book-title {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="catalogue">
+      <h2>Book Catalogue</h2>
+      <div class="book" style="border:1px solid #ccc; padding:15px; border-radius:8px; margin-bottom:20px;">
+        <span class="book-title">C Programming</span> by Dennis Ritchie<br />Category: CSE<br />Price: $9.99<br />
+        <button onclick="addToCart('C Programming', 9.99)">Add to Cart</button>
+      </div>
+      <div class="book" style="border:1px solid #ccc; padding:15px; border-radius:8px; margin-bottom:20px;">
+        <span class="book-title">Introduction to Information Technology</span><br />Category: IT<br />Price: $12.99<br />
+        <button onclick="addToCart('Introduction to Information Technology', 12.99)">Add to Cart</button>
+      </div>
+      <div class="book" style="border:1px solid #ccc; padding:15px; border-radius:8px; margin-bottom:20px;">
+        <span class="book-title">Electronic Devices</span> by Floyd<br />Category: ECE<br />Price: $15.99<br />
+        <button onclick="addToCart('Electronic Devices', 15.99)">Add to Cart</button>
+      </div>
+      <div class="book" style="border:1px solid #ccc; padding:15px; border-radius:8px; margin-bottom:20px;">
+        <span class="book-title">Basics of Civil Engineering</span><br />Category: CIVIL<br />Price: $11.99<br />
+        <button onclick="addToCart('Basics of Civil Engineering', 11.99)">Add to Cart</button>
+      </div>
+      <script>
+        function addToCart(title, price) {
+          let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          let found = false;
+          for (let i = 0; i < cart.length; i++) {
+            if (cart[i].title === title) {
+              cart[i].qty += 1;
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            cart.push({ title: title, price: price, qty: 1 });
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert(title + ' has been added to the cart.');
+        }
+      </script>
+    </div>
+  </body>
+</html>

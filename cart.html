@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cart</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fff;
+      }
+      .cart {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 30px;
+      }
+      h2 {
+        color: #007bff;
+      }
+      .empty {
+        color: #888;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cart">
+      <h2>Your Cart</h2>
+      <div id="cart-contents"></div>
+      <script>
+        function renderCart() {
+          let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          let container = document.getElementById('cart-contents');
+          if (!cart.length) {
+            container.innerHTML = '<div class="empty">Your cart is currently empty.</div>';
+            return;
+          }
+          let html = '<ul style="list-style:none;padding:0;">';
+          let total = 0;
+          cart.forEach((item, idx) => {
+            let itemTotal = item.price * item.qty;
+            total += itemTotal;
+            html += `<li style='margin-bottom:18px;'>${item.title} - $${item.price.toFixed(2)} x <button onclick='updateQty(${idx},-1)'>-</button> ${item.qty} <button onclick='updateQty(${idx},1)'>+</button> <button onclick='removeItem(${idx})' style='color:#c62828;'>🗑️</button></li>`;
+          });
+          html += `</ul><div style='font-weight:bold;'>Total Price: $${total.toFixed(2)}</div>`;
+          html += `<div style='margin-top:15px;'><button onclick='clearCart()' style='background:#c62828;color:#fff;padding:6px 16px;border:none;border-radius:4px;'>Clear Cart</button></div>`;
+          container.innerHTML = html;
+        }
+        function updateQty(idx, delta) {
+          let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          cart[idx].qty += delta;
+          if (cart[idx].qty < 1) cart[idx].qty = 1;
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+        }
+        function removeItem(idx) {
+          let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          cart.splice(idx, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+        }
+        function clearCart() {
+          if (confirm('Clear all items from cart?')) {
+            localStorage.removeItem('cart');
+            renderCart();
+          }
+        }
+        renderCart();
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Top Navigation</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+      }
+      .topnav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+      }
+      .topnav a {
+        margin: 0 20px;
+        text-decoration: none;
+        color: #222;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .topnav a:hover {
+        color: #007bff;
+      }
+      .title {
+        flex: 1;
+        text-align: left;
+        margin-left: 20px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topnav" style="background: #2e7d32; color: #fff; min-height: 48px; border-bottom: 2px solid #1b5e20;">
+      <span class="title" style="color: #fff;">Online Book Store</span>
+      <a href="main.html" target="main" style="color: #fff;">Home</a>
+      <a href="login.html" target="main" style="color: #fff;">Login</a>
+      <a href="registration.html" target="main" style="color: #fff;">Registration</a>
+      <a href="catalogue.html" target="main" style="color: #fff;">Catalogue</a>
+      <a href="cart.html" target="main" style="color: #fff;">Cart</a>
+      <span id="welcome" style="margin-left:auto; margin-right:30px; font-size:18px; font-weight:bold;"></span>
+    </div>
+    <script>
+      var username = localStorage.getItem('username');
+      document.getElementById('welcome').textContent = "Welcome, " + (username ? username : "Guest");
+    </script>
+  </body>
+</html>

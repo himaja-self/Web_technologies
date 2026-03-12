@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Categories</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f0f0f0;
+      }
+      .sidebar {
+        padding: 20px 0 0 0;
+        text-align: center;
+      }
+      .sidebar a {
+        display: block;
+        margin: 20px 0;
+        color: #0033cc;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .sidebar a:hover {
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="main.html#cse" target="main">CSE</a>
+      <a href="main.html#it" target="main">IT</a>
+      <a href="main.html#ece" target="main">ECE</a>
+      <a href="main.html#civil" target="main">CIVIL</a>
+      <a href="#" onclick="logoutUser()" style="color:#c62828;">Logout</a>
+    </div>
+    <script>
+      function logoutUser() {
+        localStorage.removeItem('username');
+        if (parent && parent.frames && parent.frames['top']) {
+          parent.frames['top'].location.reload();
+        }
+        if (parent && parent.frames && parent.frames['main']) {
+          parent.frames['main'].location.href = 'login.html';
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE userAccounts [
+    <!ELEMENT userAccounts (user+)>
+    <!ELEMENT user (username, password, email, purchaseHistory)>
+    <!ELEMENT username (#PCDATA)>
+    <!ELEMENT password (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+    <!ELEMENT purchaseHistory (purchase+)>
+    <!ELEMENT purchase (bookTitle, purchaseDate, price)>
+    <!ELEMENT bookTitle (#PCDATA)>
+    <!ELEMENT purchaseDate (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+]>
+<userAccounts>
+    <user>
+        <username>john_doe</username>
+        <password>U2FsdGVkX1+7cZj9QzLgrJjlI+q+HV7w0m1h07eO+AY=</password>
+        <email>john.doe@example.com</email>
+        <purchaseHistory>
+            <purchase>
+                <bookTitle>The Great Gatsby</bookTitle>
+                <purchaseDate>2025-02-10</purchaseDate>
+                <price>14.99</price>
+            </purchase>
+            <purchase>
+                <bookTitle>1984</bookTitle>
+                <purchaseDate>2025-01-15</purchaseDate>
+                <price>15.49</price>
+            </purchase>
+        </purchaseHistory>
+    </user>
+    <user>
+        <username>jane_smith</username>
+        <password>U2FsdGVkX19pDXFh6pzGfyoY5bTpO8e6zrfwV6ccgPE=</password>
+        <email>jane.smith@example.com</email>
+        <purchaseHistory>
+            <purchase>
+                <bookTitle>Harry Potter and the Sorcerer's Stone</bookTitle>
+                <purchaseDate>2025-02-05</purchaseDate>
+                <price>9.99</price>
+            </purchase>
+        </purchaseHistory>
+    </user>
+</userAccounts>

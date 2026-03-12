@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookCatalog [
+    <!ELEMENT bookCatalog (book+)>
+    <!ELEMENT book (title, author, genre, price, availability)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+    <!ELEMENT genre (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ELEMENT availability (#PCDATA)>
+]>
+<bookCatalog>
+    <book>
+        <title>Harry Potter and the Sorcerer's Stone</title>
+        <author>J.K. Rowling</author>
+        <genre>Fantasy</genre>
+        <price>9.99</price>
+        <availability>In Stock</availability>
+    </book>
+    <book>
+        <title>Becoming</title>
+        <author>Michelle Obama</author>
+        <genre>Biography</genre>
+        <price>24.99</price>
+        <availability>In Stock</availability>
+    </book>
+    <book>
+        <title>Atomic Habits</title>
+        <author>James Clear</author>
+        <genre>Self-Help</genre>
+        <price>16.99</price>
+        <availability>Out of Stock</availability>
+    </book>
+</bookCatalog>
